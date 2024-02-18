@@ -117,19 +117,23 @@ export default function HomeScreen() {
             <SafeAreaView className={ios ? "-mb-2" : "mb-3"}>
               <StatusBar style="light" />
               <View className="flex-row justify-between items-center mx-5 mt-2">
-                <TouchableOpacity style={styles.searchIcon}>
+                <TouchableOpacity 
+                  onPress={() => navigation.push("Search")}
+                  style={styles.searchIcon}>
                   <MagnifyingGlassIcon
                     size="30"
                     strokeWidth={2}
                     color="white"
                   />
                 </TouchableOpacity>
-                <Image
-                  source={require("../../assets/images/profile.jpg")}
-                  className="rounded-s"
-                  style={styles.iconImg}
-                />
-                {/* <UserCircleIcon size="30" strokeWidth={2} color="white" /> */}
+                <TouchableOpacity
+                  onPress={() => navigation.push("Profile")}>
+                  <Image
+                    source={require("../../assets/images/profile.jpg")}
+                    className="rounded-s"
+                    style={styles.iconImg}
+                  />
+                </TouchableOpacity>
               </View>
             </SafeAreaView>
           </View>
@@ -161,7 +165,7 @@ export default function HomeScreen() {
 
         <View className="pb-12 space-y-4">
           <View className="mx-4 flex-row justify-between items-center">
-            <Text className="text-white text-lg">Top Movies</Text>
+            <Text className="text-white text-xl font-bold">Top Movies</Text>
           </View>
 
           <ScrollView
@@ -213,7 +217,7 @@ export default function HomeScreen() {
         </View>
         <View className="pb-12 space-y-4">
           <View className="mx-4 flex-row justify-between items-center">
-            <Text className="text-white text-lg">Top Movies</Text>
+            <Text className="text-white text-xl font-bold">Top Movies</Text>
           </View>
 
           <ScrollView

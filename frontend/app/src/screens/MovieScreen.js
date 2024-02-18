@@ -29,9 +29,9 @@ const ios = Platform.OS == "ios";
 const topMargin = ios ? "" : " mt-3";
 var { width, height } = Dimensions.get("window");
 
-export default function HomeScreen() {
-  
+export default function MovieScreen() {
   const navigation = useNavigation();
+  
   return (
     <View>
       <ScrollView
@@ -97,10 +97,14 @@ export default function HomeScreen() {
           >
             <Text style={styles.homeTitle}>Blade Runner 2049</Text>
             <View style={styles.movieUnderGroup}>
-                    <Text className="mb-6" style={{color: "rgba(255, 255, 255, 0.7)"}}>
-                      <HandThumbUpIcon size="12"
-                    strokeWidth={2}
-                    color="#83FE60"/><Text style={{color: "#83FE60"}}>  95 Likes</Text>  •  2017  •  Sci Fi  •  Movies</Text>
+                    <Text className="mb-5" style={{color: "rgba(255, 255, 255, 0.7)"}}>
+                      <HandThumbUpIcon 
+                      size="13"
+                      strokeWidth={2}
+                      color="#83FE60"
+                      className="align-middle"
+                      />
+                    <Text style={{color: "#83FE60"}}>  95 Likes</Text>  •  2017  •  Sci Fi  •  Movies</Text>
             </View>
             <View className="flex-row">
               <TouchableOpacity
@@ -123,7 +127,7 @@ export default function HomeScreen() {
           </View>
         </View>
 
-        <View style={styles.movieBottom} className="flex-row flex-1 justify-center align-center items-center">
+        <View style={styles.bottomIconsRow}   className="flex-row flex-1 justify-center align-center items-center">
           <View>
             <TouchableOpacity style={[styles.addIcon, styles.bottomIcons]}>
             <PlusIcon
@@ -132,7 +136,7 @@ export default function HomeScreen() {
               color="white"
             />
             </TouchableOpacity>
-            <Text className="text-center text-white text-md mt-4">Add to List</Text>
+            <Text className="text-center text-white text-md mt-3">Add to List</Text>
           </View>
          <View> 
           <TouchableOpacity style={[styles.likeIcon, styles.bottomIcons]} >
@@ -143,7 +147,7 @@ export default function HomeScreen() {
             />
             
             </TouchableOpacity>
-            <Text className="text-center text-white text-md mt-4">Like</Text>
+            <Text className="text-center text-white text-md mt-3">Like</Text>
           </View>
           <View>
             <TouchableOpacity style={[styles.shareIcon, styles.bottomIcons]} >
@@ -153,11 +157,89 @@ export default function HomeScreen() {
                 color="white"
               />
             </TouchableOpacity>
-            <Text className="text-center text-white text-md mt-4">Recommend</Text>
+            <Text className="text-center text-white text-md mt-3">Recommend</Text>
           </View>
         </View>
-        <View className="pb-12 space-y-4">
-          
+        <View style={styles.bottomProlog} className=" flex-1 ">
+          <Text style={styles.prologText}>
+            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout the point of
+            use.
+          </Text>
+          <Text style={styles.castText}>
+            Cast: Bradley Cooper, Carey Mulligan, Matt Boomer ... more
+          </Text>
+          <Text style={styles.castText}>
+            Director: Bradley Cooper
+          </Text>
+        </View>
+        <View style={styles.bottomProfile} className=" flex-1 ">
+          <Text className="text-white font-bold text-base mb-2">
+            Created By
+          </Text>
+          <Pressable style={styles.profileRow} className="flex-row align-center" onPress={() => navigation.push("Profile")}>
+            <Image
+              source={require("../../assets/images/profile.jpg")}
+              className="rounded-s"
+              style={styles.iconImg}
+            />
+            <View className="ml-3 mt-2">
+              <Text className="text-white font-bold text-base ">Tyler Lockett</Text>
+              <Text  style={styles.profileDesc} className="text-white mb-3">It is a long established fact that a reader...</Text>
+            </View>
+          </Pressable>
+        </View>
+        <View style={styles.bottomMore} className=" flex-1 mb-3">
+          <Text className="text-white font-bold text-base mb-3" style={{paddingHorizontal: 30}}>
+            More Like This
+          </Text>
+          <View>
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={{ paddingHorizontal: 30 }}
+            >
+              <TouchableWithoutFeedback>
+                <View className="space-y-1 mr-3">
+                  <Image
+                    source={require("../../assets/images/moviePoster2.png")}
+                    className="rounded-2xl"
+                    style={{ width: width * 0.32, height: height * 0.21 }}
+                  />
+                  
+                </View>
+              </TouchableWithoutFeedback>
+              <TouchableWithoutFeedback>
+                <View className="space-y-1 mr-3">
+                  <Image
+                    source={require("../../assets/images/moviePoster2.png")}
+                    className="rounded-2xl"
+                    style={{ width: width * 0.32, height: height * 0.21 }}
+                  />
+                  
+                </View>
+              </TouchableWithoutFeedback>
+              <TouchableWithoutFeedback>
+                <View className="space-y-1 mr-3">
+                  <Image
+                    source={require("../../assets/images/moviePoster2.png")}
+                    className="rounded-2xl"
+                    style={{ width: width * 0.32, height: height * 0.21 }}
+                  />
+                  
+                </View>
+              </TouchableWithoutFeedback>
+              <TouchableWithoutFeedback>
+                <View className="space-y-1 mr-3">
+                  <Image
+                    source={require("../../assets/images/moviePoster2.png")}
+                    className="rounded-2xl"
+                    style={{ width: width * 0.32, height: height * 0.21 }}
+                  />
+                  
+                </View>
+              </TouchableWithoutFeedback>
+            </ScrollView>
+          </View>
         </View>
       </ScrollView>
     </View>
@@ -166,11 +248,18 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   iconImg: {
-    width: width * 0.13,
-    height: width * 0.13,
+    width: width * 0.15,
+    height: width * 0.15,
     borderRadius: 100,
     borderWidth: 1,
     borderColor: "white",
+  },
+  profileDesc: {
+    opacity: .4,
+    fontSize: 12
+  },
+  profileRow: {
+    alignItems: "center"
   },
   backIcon: {
     backgroundColor: "#197AEC",
@@ -191,7 +280,7 @@ const styles = StyleSheet.create({
     height: width * 0.18,
     justifyContent: "center",
     alignItems: "center",
-    marginHorizontal: 28,
+    marginHorizontal: 31,
     borderRadius: 100,  
     backgroundColor: "#2A2A2A",
   },
@@ -199,8 +288,32 @@ const styles = StyleSheet.create({
   
     
   },
-  movieBottom: {
-    marginTop: height * -.08
+  bottomIconsRow: {
+    marginTop: ios ? height * -.105 : height * -.085
+  },
+  bottomProlog: {
+    marginTop: height * .023,
+    paddingHorizontal: 30  
+  },
+  bottomProfile: {
+    marginTop: height * .021,
+    paddingHorizontal: 30  
+  },
+  bottomMore: {
+    marginTop: height * .025,
+    //paddingHorizontal: 30  
+  },
+  prologText: {
+    color: "white",
+    marginBottom: 7,
+    fontSize: 13,
+  },
+  castText: {
+    color: "white",
+    fontSize: 11,
+    fontWeight: "700",
+    opacity: .3,
+    lineHeight: 15.5
   },
   homeTitle: {
     color: "white",

@@ -3,6 +3,9 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "../screens/HomeScreen";
 import MovieScreen from "../screens/MovieScreen";
+import ProfileScreen from "../screens/ProfileScreen";
+import PSScreen from "../screens/ProfileSettingScreen";
+import SearchScreen from "../screens/SearchScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +22,21 @@ export default function AppNavigation() {
           name="Movie"
           options={{ headerShown: false }}
           component={MovieScreen}
+        />
+        <Stack.Screen
+          name="Profile"
+          options={{ headerShown: false }}
+          component={ProfileScreen}
+        />
+        <Stack.Screen
+          name="PSSetting"
+          options={{ headerShown: false }}
+          component={PSScreen}
+        />
+        <Stack.Screen
+          name="Search"
+          options={{ headerShown: false }}
+          component={SearchScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>
